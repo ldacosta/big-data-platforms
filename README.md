@@ -106,34 +106,34 @@ par un large éventail de personnes.
     * L'installation requiert python avec au minimum les libraires pandas, scikit-learn , matplotlib et jupytelab. 
     * Le tout est open source.
 * Impact sur le "Processus de création du modèle d'apprentissage machine" 
-(voir Image; vert == efficace; rouge == ineeficace)
+(voir Image; vert == efficace; rouge == inefficace)
     * Points positifs:
-        * Les Notebook python sont interactifs, rendant les itérations d'essais très rapides.
+        * **Les Notebook python sont interactifs, rendant les itérations d'essais très rapides**.
         Excellent pour "Préparation des données" et "entraînement des modèles".
-        * Il y a énormément de librairies dans python permettant d'extraire, manipuler et visualiser 
-        les données. Excellent pour "Préparation des données".
-        * Il y a énormément de libraires d'apprentissage machine (par exemple scikit-learn) permettant 
+        * **Il y a énormément de librairies dans python permettant d'extraire, manipuler et visualiser 
+        les données**. Excellent pour "Préparation des données".
+        * **Il y a énormément de libraires d'apprentissage machine** (par exemple scikit-learn) permettant 
         d’entraîner divers modelés de façon standardisée, et de changer des modèles rapidement et facilement. 
-        * Il y a plusieurs librairies pour faire paralléliser le calcul (par exemple Dask) et du calcul distribué. 
+        * **Il y a plusieurs librairies pour faire paralléliser le calcul** (par exemple Dask) et du calcul distribué. 
         Bon pour "entraînement des modèles".
-        * L'interactivité et la quantité des libraires de visualisation disponibles permettent de présenter 
+        * L'interactivité et la quantité des **libraires de visualisation** disponibles permettent de présenter 
         efficacement et rapidement des résultats au client.
     * Points négatifs:
-        * Il n'y a pas un système facile et automatique pour faire une mise en production. 
+        * **Il n'y a pas un système facile et automatique pour faire une mise en production**. 
         Une fois le prototype et la présentation terminés, il est nécessaire de réécrire manuellement 
         les Notebooks en applications. 
-        * Tout le processus de rebuild et redéploiement être fait avec d'autres outils 
+        * **Tout le processus de rebuild et redéploiement être fait avec d'autres outils** 
         (Airflow (https://airflow.apache.org/) , Jenkins (https://jenkins.io/) etc ...).
-        * La tâche calcul distribué doit être montée "from scratch" par les Data Engineers.
+        * **La tâche calcul distribué doit être montée "from scratch"** par les Data Engineers.
 * Courbe d'apprentissage pour chaque intervenant (DataScientist, DataEngineer): 
-    * Courbe d'apprentissage élevée pour les DataScientists puisqu'il faut apprendre python + librairies data science + librairies de visualisation.
-    * Courbe d'apprentissage élevée pour les DataEngineer  puisqu'il faut apprendre python + librairies de visualisation et diverses librairies de calcul distribué (Dask est un exemple). À noter par contre que dans le cas de Datasets de petite taille (<1G), un DataEngineer n'est pas nécessaire.
-    * Mise à l'échelle pour des volumes larges de données: 
-    Difficile à faire marcher avec du "Big Data" pour des données texte / numériques, 
+    * Élevée pour les DataScientists puisqu'il faut apprendre python + librairies data science + librairies de visualisation.
+    * Élevée pour les DataEngineer  puisqu'il faut apprendre python + librairies de visualisation et diverses librairies de calcul distribué (Dask est un exemple). À noter par contre que dans le cas de Datasets de petite taille (<1G), un DataEngineer n'est pas nécessaire.
+* Mise à l'échelle pour des volumes larges de données: 
+    **Difficile à faire marcher avec du "Big Data" pour des données texte / numériques**, 
     car les données d'entraînement doivent entrer en mémoire. 
     Il est possible de le faire avec Dask ou d'autres libraires de parallélisation de calcul, 
     mais ce n'est pas trivial, et il faut adapter les algorithmes manuellement.
-* Scalabilité organisationnelle et DevOps: difficile car: 
+* Scalabilité organisationnelle et DevOps: **difficile** car: 
     * pas de processus uniformisé de mise en production.
     * pas de mécanisme standard d'avoir la sécurité d’accès au modèles entraînes qui sont déployées en production. Même problématique pour sécuriser les accès aux diverses ressources (Ex.: base de données, HDFS etc.) nécessaires pour le réentraînement.
     * Gestion de permissions limitée pour les notebooks (mot de passe ou token)
