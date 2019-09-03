@@ -293,3 +293,28 @@ qui inclut la gestion des données, modèles et résultats, tout en utilisant le
     * Gestion des données en prémisse est une question ouverte.
 
 Produits similaires: Apprentissage machine de la plateforme Azure
+
+### H2O.ai 
+
+H20.ai offre offre une plateforme offrant des algorithmes optimisés pour faire de l'apprentissage machine. H2O offre aussi une plateforme qui permet de faire de l'apprentissage machine automatique (https://www.h2o.ai/products/h2o-driverless-ai/), qui n'est pas couverte dans ce document. 
+
+
+![Image](images/H2O.ai.jpg)
+
+* Besoin minimal d'infrastructure :
+    * Une machine virtuelle Linux avec java et python installés
+* Impact sur le "Processus de création du modèle d'apprentissage machine" : 
+    * La plateforme a ses propres agents de calcul distribué. 
+        * Ces agents sont facilement déployables dans le nuage, ou sur des instances en prémisse. 
+        * Il y a un support pour être exécuté sur Spark.
+    * Un api facile d'utilisation permet d'envoyer l'entraînement du modèle à partir de python / R (via notebooks ou des applications), vers les instances de calcul distribué.
+    * Support de AutoML qui permet de tester automatiquement divers algorithmes d'apprentissage machine: http://docs.h2o.ai/h2o/latest-stable/h2o-docs/automl.html# .
+* Courbe d'apprentissage pour chaque intervenant (DataScientist, DataEngineer):
+    * Élevée pour les DataScientists puisqu'il faut apprendre le langage spécifique + librairies data science + 
+    librairies de visualisation. 
+    Par contre dans le cas que les données de test et train soient déjà préparées, 
+    il est très facile de tester différents algorithmes avec les Notebooks Flow.
+    * Élevée pour les DataEngineer puisqu'il faut apprendre langage spécifique + librairies de visualisation + gestion 
+    du cluster distribué. 
+* Mise à l'échelle pour des volumes larges de données: Pas testé.
+* Scalabilité organisationnelle et DevOps: Cette section ne s'applique pas.
