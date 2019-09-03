@@ -127,7 +127,9 @@ par un large éventail de personnes.
         * **La tâche calcul distribué doit être montée "from scratch"** par les Data Engineers.
 * Courbe d'apprentissage pour chaque intervenant (DataScientist, DataEngineer): 
     * Élevée pour les DataScientists puisqu'il faut apprendre python + librairies data science + librairies de visualisation.
-    * Élevée pour les DataEngineer  puisqu'il faut apprendre python + librairies de visualisation et diverses librairies de calcul distribué (Dask est un exemple). À noter par contre que dans le cas de Datasets de petite taille (<1G), un DataEngineer n'est pas nécessaire.
+    * Élevée pour les DataEngineer  puisqu'il faut apprendre python + librairies de visualisation et diverses librairies 
+    de calcul distribué (Dask est un exemple).
+        * À noter par contre que dans le cas de Datasets de petite taille (<1G), un DataEngineer n'est pas nécessaire.
 * Mise à l'échelle pour des volumes larges de données: 
     **Difficile à faire marcher avec du "Big Data" pour des données texte / numériques**, 
     car les données d'entraînement doivent entrer en mémoire. 
