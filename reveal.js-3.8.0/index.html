@@ -21,12 +21,41 @@
 			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
 			document.getElementsByTagName( 'head' )[0].appendChild( link );
 		</script>
+
+		<style>
+			html, body {
+			  height: 100%;
+			}
+
+			img.one {
+			  height: auto;
+			  width: auto;
+			}
+		</style>
+
 	</head>
 	<body>
 		<div class="reveal">
 			<div class="slides">
-				<section>Slide 1</section>
-				<section>Slide 2</section>
+				<section>
+					<table>
+						<tr>
+							<td><img style="height: 40%;width: 40%;" src="images/full.jpg" width="300" height="300" alt="Italian Trulli"></td>
+							<td>text</td>
+						</tr>
+					</table>
+				</section>
+				<section>
+					<p>Sized image (in %) 44:</p>
+					<img style="height: 60%;width: 60%;" src="images/full.jpg" width="300" height="300" alt="Italian Trulli">
+					<p>lalala</p>
+				</section>
+				<section>Hi, my name is banana</section>
+				<section>
+					<img src="images/full.jpg" alt="Italian Trulli">
+					<p>lalala</p>
+				</section>
+				<section>Thank you for coming!</section>
 			</div>
 		</div>
 
