@@ -97,7 +97,7 @@ effort nécessaire (logiciels, infrastructure) afin de pouvoir travailler avec d
 par un large éventail de personnes. 
 
 
-### Jupyter Notebooks
+### Point de départ: Jupyter Notebooks
 
 ![Image](images/Jupyter.jpg)
 
@@ -143,3 +143,53 @@ par un large éventail de personnes.
     * Difficile de prévoir la demande et les coûts pour la demande computationnelle.
 
 Produits similaires: Notebooks R
+
+### KNIME
+
+Chaque cas de travail dans KNIME est composé de plusieurs nœuds liés dans un espace de travail qui est une grosse grille. Un nœud prend des données en entrée, fait des transformations et retourne une sortie. Les sorties d'un nœud sont utilisées comme des entrées des nœuds suivants, ce qui transforme tout le processus en un flux. Des commentaires peuvent être ajoutés afin de rendre le diagramme plus compréhensible. Voici un exemple:
+
+
+![Image](images/knime-gui.png)
+
+
+
+![Image](images/knime-flow.jpg)
+
+
+* Besoin minimal d'infrastructure :
+    * L'installation minimale requiert une machine virtuelle/ physique ayant Windows, Linux ou macosx. 
+    * L'installation installe un serveur de travail.
+* Impact sur le "Processus de création du modèle d'apprentissage machine" : 
+    * Points positifs:
+        * Les tâches "Préparation des données" et "entraînement des modèles" peuvent être effectuées très rapidement 
+        et facilement dans le cas que des noeuds existent pour faire le prétraitement/ entraînement du modelé. 
+            * Dans le cas échéant écrire du code "custom" est plus compliqué qu’avec les Notebooks python.
+        * Les visualisations des données de base sont assez bonnes. 
+            * Par contre, ils ne sont pas très beaux / interactifs. Avoir des visualisations sur mesure est compliqué.
+        * Le pipeline de traitement simplifie la visibilité pour un traitement simple, mais peut être très dur à suivre 
+            pour un traitement complexe, sans compter une exécution très lente.
+        * Il y a beaucoup de nœuds permettant de paramétrer divers algorithmes d’apprentissage machine. 
+            * Il est par contre compliqué d'optimiser / paralléliser les diverses taches.
+        * Il est possible de faire des rapports, 
+            * mais il n'est pas possible d'avoir des rapports interactifs de la même qualité qu’avec le Jupyter Notebook.
+        * Le pipeline de traitement est facilement portable de l'environnement de développement en production.
+        * Il est possible de créer facilement une application REST avec un modèle entraîné. 
+        L'application REST roule sur le serveur de KNIME, prend un JSON en entrée et renvoie un JSON en sortie.
+    * Points négatifs:
+        * La tâche calcul distribué doit être montée "from scratch" par les Data Engineers.
+         Il y a du support pour exécuter des tâches sur Spark, mais il faut monter le cluster Spark soi-même.
+* Courbe d'apprentissage pour chaque intervenant (DataScientist, DataEngineer): 
+    * Très basse les DataScientists pour des modèles / pipelines de traitement simples. 
+    La courbe d’apprentissage augmente significativement dans les cas d'optimisation de performance / création des noeuds "custom".
+    * Élevée pour les DataEngineer pour paralléliser le calcul.
+* Mise à l'échelle pour des volumes larges de données: 
+    Très difficile d’entraîner des modèles sur du "Big Data" (plus difficile qu’avec Jupyter Notebooks). 
+    Il est possible de connecter KNIME sur un cluster Spark, mais c'est une autre paire de manches.
+* Scalabilité organisationnelle et DevOps: 
+    Considérant la possibilité de convertir un modèle en serveur REST via le serveur KNIME directement, 
+    ainsi que la façon standard de créer un pipeline, KNIME peut être un assez bon compromis dans le cas que les modèles 
+    entraînés soient assez simples.
+* Devops: Il n'y a pas de gestion, ni de datasets d'entraînement, ni de résultats.
+Toute la gestion de ressources computationnelles est faite à bras. Difficile de prévoir la demande et les coûts.
+
+Produits similaires: Rapid Miner
