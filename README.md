@@ -193,3 +193,64 @@ Chaque cas de travail dans KNIME est composé de plusieurs nœuds liés dans un 
 Toute la gestion de ressources computationnelles est faite à bras. Difficile de prévoir la demande et les coûts.
 
 Produits similaires: Rapid Miner
+
+### Databricks
+
+Databricks offre une solution intégrée pour faire des analytiques sur des données massives. 
+Le mot clé est intégration des technologies permettant de faire de l'apprentissage machine dans Spark. 
+Dans le cadre de cette étude, nous allons nous focaliser principalement sur les notebooks Databricks, 
+qui permettent de faire de l'exploration ainsi que d’entraîner des modèles de science de données. 
+
+![Image](images/Databricks.jpg)
+
+* Besoin minimal d'infrastructure :
+    * Un compte nuage (AWS / Azure) avec un noeud pour exécuter un notebook Databricks.
+* Impact sur le "Processus de création du modèle d'apprentissage machine" : 
+    * Points positifs:
+        * Les notebooks python sont interactif, rendant les itérations d'essais très rapides. 
+        Ceci accélère les tâches "Préparation des données" et "entraînement des modèles".
+        * Il y a énormément de librairies dans python permettant d'extraire, manipuler et visualiser les données 
+        ce qui accéléré la tâche "Préparation des données". 
+        De plus, Spark permet de paralléliser automatiquement un plusieurs tâches de traitement dépendamment 
+        de la capacité du cluster. 
+        * De plus il est possible de manipuler les données via un api SQL (Spark SQL). 
+        Par contre les messages d'erreurs de Spark sont beaucoup moins explicites que ceux faits par python via un notebook python.
+    * Le nombre de libraires d'apprentissage machine natives à Spark est plus limité (spark ml). 
+    Par contre, il est possible d'utiliser certaines librairies d'apprentissage machine comme scikit-learn directement 
+    dans python, puis utiliser Spark comme un outil de distribution de tâches 
+    (voir: https://databricks.com/blog/2016/02/08/auto-scaling-scikit-learn-with-apache-spark.html ). 
+    Pour intégrer d'autres librairies voir: https://docs.databricks.com/spark/latest/mllib/index.html#third-party-libraries. 
+        * L'intégration des algorithmes "third-party" n'est pas facile.
+    * L'interactivité et la quantité des libraires de visualisation disponibles permettent de présenter efficacement 
+    et rapidement des résultats au client.
+    * Databricks offre plusieurs API's permettant de faire de l'intégration continue et par conséquent d'automatiser 
+    l'entraînement et le déploiement de modèles 
+    (voir: https://databricks.com/blog/2017/10/30/continuous-integration-continuous-delivery-databricks.html ). 
+    Il est aussi possible d’exporter les modelés entraînes via MLeap 
+    (https://docs.databricks.com/spark/latest/mllib/mleap-model-export.html#) 
+    ou de les déployer dans un API web utilisant MLflow et AWS SageMaker 
+    (https://docs.databricks.com/spark/latest/mllib/mlflow-deployment.html).
+    * Le calcul distribué est fait sur Spark. Les clusters de calculs Spark peuvent être créés sur demande via 
+    un petit formulaire UI. 
+        * Dans le cas que l'algorithme exécuté requière un autre type de cluster, il faut monter ce dernier à bras.
+* Courbe d'apprentissage pour chaque intervenant (DataScientist, DataEngineer):
+    * Élevée pour les DataScientists puisqu'il faut apprendre python + librairies data science + librairies de visualisation + PySpark.
+    * Élevée pour les DataEngineer puisqu'il faut apprendre python + librairies de visualisation + PySpark. 
+* Mise à l'échelle pour des volumes larges de données: 
+    * Le prétraitement des données scale très bien avec Spark. 
+        * Il suffit d'augmenter la taille du cluster pour avoir une augmentation de performance proportionnelle. 
+        * La scalabilité d'entraînement des modèles dépend de l'implémentation des modèles. 
+        Databricks permet une intégration avec H2O.ai pour paralléliser l'exécution des algorithmes.
+* Scalabilité organisationnelle et DevOps: 
+    Databricks offre plusieurs mécanismes rendant la scalabilité organisationnelle efficace :
+    * Il y a plusieurs processus de mise en production vi MLFlow 
+    (https://docs.databricks.com/spark/latest/mllib/mlflow-deployment.html) .
+    * Il y a pas de mécanisme standard d'avoir la sécurité d’accès au modèle entraînes qui sont déployées en production. 
+    * Peu de Devops:
+        * Les données sont sauvegardées dans le nuage, ce qui fait que le stockage auto-scale.
+        * Les clusters de calculs Spark peuvent être créés sur demande via un petit formulaire UI. Un mécanisme existe pour restreindre la quantité de ressources utilisables par usager.
+        * Par contre, due à leurs grande flexibilité, les notebooks n'offrent de standards de code par défaut.
+* Points importants:
+    * Très cher en plus d'avoir besoin d'un compte nuage
+    * Pas de support de Bitbucket server (https://docs.databricks.com/user-guide/notebooks/bitbucket-cloud-version-control.html).
+    * Spark tax (exécution de chaque cellule prends au moins 2-3 secondes).
