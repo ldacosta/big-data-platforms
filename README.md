@@ -1,39 +1,30 @@
-## Plateformes Big Data
+# Plateformes Big Data
 
 Ce document explore les avantages et inconvénients d'utiliser diverses plateformes en science de données. 
 
 
 Si suit une description sommaire des sections du document:
-Objectifs: Décris plus en détail les objectifs d'exploration
-Processus d'analyse en sciences de données : Cette section décrit tout le processus permettant à partir des données d'entraînement fournies par le client de livrer un algorithme de prédiction / classification. Une courte description décrit ensuite comment ce processus est implémenté via les notebooks en python
-Exploration des plateformes, pour chaque plateforme suivante : KNIME, H2O.ai, Domino, Databricks, décrire les avantages / inconvénients.
+* Exploration des plateformes, pour chaque plateforme suivante : KNIME, H2O.ai, Domino, Databricks, décrire les avantages / inconvénients.
 
 
-You can use the [editor on GitHub](https://github.com/ldacosta/big-data-platforms/edit/master/README.md) to maintain and preview the content for your website in Markdown files.
+## Objectifs
+1. Comprendre l'offre est la direction du marché dans le domaine de sciences des données.
+1. Évaluer si les plateformes de sciences de données peuvent nous aider à accélérer le développement des modèles.
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
 
-### Markdown
+## Processus de création d'un modèle d'apprentissage machine
+(ou _Processus d'analyse en sciences de données_)
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+Cette section décrit le processus permettant, à partir des données d'entraînement 
+fournies par le client, de livrer un algorithme de prédiction / classification. 
 
-```markdown
-Syntax highlighted code block
+[//]: # (Une courte description décrit ensuite comment ce processus est implémenté via les notebooks en python)
 
-# Header 1
-## Header 2
-### Header 3
+Le processus de création d'un modèle d'apprentissage machine commence par la compréhension de la problématique du client, 
+et fini avec un algorithme qui permet soit de prédire ou de catégoriser un éventement par rapport aux événements historiques. 
 
-- Bulleted
-- List
+[//]: # (Un simple exemple serait d’entraîner un algorithme à prédire la probabilité qu'un bâtiment passe au feu. L'algorithme est entraîné en utilisant les données historiques des feux de bâtiments.)
 
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
-```
 
 ![Image](images/full.jpg)
 
