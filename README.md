@@ -286,7 +286,13 @@ Produits similaires: Apprentissage machine de la plateforme Azure
 
 ### H2O.ai 
 
-H20.ai offre offre une plateforme offrant des algorithmes optimisés pour faire de l'apprentissage machine. H2O offre aussi une plateforme qui permet de faire de l'apprentissage machine automatique (https://www.h2o.ai/products/h2o-driverless-ai/), qui n'est pas couverte dans ce document. 
+H20.ai offre offre une plateforme offrant des algorithmes optimisés pour faire de l'apprentissage machine.
+ ````markdown
+ H2O offre aussi une plateforme qui permet de faire de l'apprentissage 
+ machine automatique 
+ (https://www.h2o.ai/products/h2o-driverless-ai/), 
+ qui n'est pas couverte dans ce document. 
+````
 
 
 ![Image](images/H2O.ai.jpg)
