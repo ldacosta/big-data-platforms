@@ -254,3 +254,42 @@ qui permettent de faire de l'exploration ainsi que d’entraîner des modèles d
     * Très cher en plus d'avoir besoin d'un compte nuage
     * Pas de support de Bitbucket server (https://docs.databricks.com/user-guide/notebooks/bitbucket-cloud-version-control.html).
     * Spark tax (exécution de chaque cellule prends au moins 2-3 secondes).
+
+### Domino Data Lab
+
+Plateforme de gestion des modelés d'apprentissage machine. 
+La plateforme aide à gérer le processus d'apprentissage machine, 
+qui inclut la gestion des données, modèles et résultats, tout en utilisant les technologies existantes 
+(comme les notebooks python), pour entraîner les modèles.
+
+![Image](images/Dominos.jpg)
+
+* Besoin minimal d'infrastructure :
+    * Un compte AWS + un compte domino.
+* Impact sur le "Processus de création du modèle d'apprentissage machine" : 
+    * La plateforme dominos n'offre pas de système d'apprentissage machine intégré, 
+    mais utilise plutôt les solutions existantes comme les notebooks python /R. 
+    * Dominos permet la gestion de calcul en parallèle en offrant la possibilité d’instancier une machine 
+    de taille spécifique par entraînement d'un modèle. 
+    Le parallélisme et la scalabilité d'entraînement d'un modèle doivent être faits à bras. 
+* La plateforme facilite le déploiement :
+    * Gestion des données dans le nuage
+    * Offre la possibilité de déployer un modèle en tant que service web
+    * Plusieurs options pour réexécuter et rédéployer un modèle.
+* Courbe d'apprentissage pour chaque intervenant (DataScientist, DataEngineer):
+    * Élevée pour les DataScientists puisqu'il faut apprendre le langage spécifique + librairies data science + 
+    librairies de visualisation.
+    * Élevée pour les DataEngineer puisqu'il faut apprendre langage spécifique + librairies de visualisation. 
+* Mise à l'échelle pour des volumes larges de données: 
+    La plateforme n'offre pas de support pour le traitement des données volumineuses.
+* Scalabilité organisationnelle et DevOps: 
+    Domino offre plusieurs mécanismes rendant la scalabilité organisationnelle efficace :
+    * Calcul sur demande, tout en offrant la gestion des coûts.
+    * Gestion facile des données, des modèles et des résultats
+    * Processus de déploiement, réentraînement et mise en production facile modèle.
+* Points importants:
+    * Le coût est à déterminer.
+    * Permet d'être exécuté dans le nuage on en prémise (via kubernetes).
+    * Gestion des données en prémisse est une question ouverte.
+
+Produits similaires: Apprentissage machine de la plateforme Azure
