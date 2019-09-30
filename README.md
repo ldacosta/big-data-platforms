@@ -193,7 +193,42 @@ Chaque cas de travail dans KNIME est composé de plusieurs nœuds liés dans un 
 * Devops: Il n'y a pas de gestion, ni de datasets d'entraînement, ni de résultats.
 Toute la gestion de ressources computationnelles est faite à bras. Difficile de prévoir la demande et les coûts.
 
-Produits similaires: Rapid Miner
+### Rapid Miner
+
+La version étudiée ici est [Rapid Miner Studio](https://rapidminer.com/products/studio/) et son extension [Radoop](https://rapidminer.com/products/radoop/) (pour avoir accès à du calcul distribué).
+
+Comme dans [KNIME](#knime) la modélisation se fait dans un espace de travail où des _boîtes_ de calcul (des _transformations_) peuvent être déposées pour créer un flux (en liant les sorties d'une boîte aux entrées d'une autre). Les composantes de ce flux sont, par design, assez auto-descriptives, mais des commentaires en texte libre peuvent être ajoutées pour rendre le travail mieux documenté.
+
+Voici le résultat de l'évaluation en termes de ''_création du modèle d'apprentissage machine_'':
+
+![Image](images/RapidMiner.jpg)
+
+
+* Besoin minimal d'infrastructure :
+    * L'installation crée un serveur de travail; ceci requiert une machine virtuelle/physique ayant Windows, Linux ou macosx. Il existe aussi une version s'éxécutant [directement sur le Web](https://automodel.rapidminer.com/am/), mais cela n'a pas été testé dans cet effort.
+* Impact sur le "Processus de création du modèle d'apprentissage machine" : 
+    * Points positifs:
+        * Les tâches "Préparation des données" et "entraînement des modèles" peuvent être effectuées très rapidement et facilement dans le cas que des noeuds existent pour faire le prétraitement/ entraînement du modelé.
+            * Ceci est le cas pour [la version Studio](https://rapidminer.com/products/studio/); une grande variété de modèles à entraîner sont disponibles.
+            * Dans le cas échéant (_ie_, créer ses propres modèles, ou en utilisant la version [Radoop](https://rapidminer.com/products/radoop/)) écrire du code spécifique n'est pas simple, et nécessite une connaissances en profondeur du domaine de l'apprentissage machine _et_ de la plateforme elle-même.
+        * Les visualisations des données peuvent être faites facilement. 
+            * Cependant: avoir des visualisations sur mesure est compliqué.
+        * Le pipeline de traitement simplifie la visibilité pour un traitement simple, mais peut être très dur à suivre pour un traitement complexe, sans compter une exécution très lente.
+        * Il y a beaucoup de nœuds permettant de paramétrer divers algorithmes d’apprentissage machine. 
+        * (sur [la version Studio](https://rapidminer.com/products/studio/)) Il n'est pas évident comment paralléliser les diverses tâches.
+        * Il est possible de faire des rapports, mais leur interactivité n'est pas la même qu'un notebook avec Jupyter.
+        * Le pipeline de traitement est facilement portable de l'environnement de développement en production: il est possible de créer facilement une application REST avec un modèle entraîné. Celle-ci s'éxécute roule sur le serveur de RapidMiner.
+        * La [version Radoop](https://rapidminer.com/products/radoop/) supporte la distribution de tâches sur un réseau Hadoop ou Spark.
+* Courbe d'apprentissage pour chaque intervenant (DataScientist, DataEngineer): 
+    * Très rapide pour les DataScientists pour des modèles / pipelines de traitement simples. Pour les cas d'optimisation de performance / création des noeuds "custom" il n'y a pas de support pré-défini donc il est attendu que ce soit beaucoup de travail d'apprentissage.
+    * En utilisant la [version Radoop](https://rapidminer.com/products/radoop/), pas de travail pour les DataEngineer. Sinon, beaucoup d'effort pour paralléliser le calcul.
+* Mise à l'échelle pour des volumes larges de données: avec la [version Radoop](https://rapidminer.com/products/radoop/), l'effort d'entraîner des modèles sous Big Data est comparable à Jupyter.
+* Scalabilité organisationnelle et DevOps: 
+    RapidMiner peut être un assez bon compromis dans le cas que les modèles 
+    entraînés soient assez simples.
+* Devops: Il n'y a pas de gestion, ni de datasets d'entraînement, ni de résultats.
+Toute la gestion de ressources computationnelles est faite _from scratch_. Difficile de prévoir la demande et les coûts.
+
 
 ### Databricks
 
